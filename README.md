@@ -6,20 +6,20 @@
 
 ## WireFrames 
 
-### Home Page
+### ->Home Page
 (https://i.imgur.com/9iqJzma.png)
 
-### Create User
+### ->Create User
 (https://i.imgur.com/m1PUosq.png)
 
-### Profile Page
+### ->Profile Page
 (https://i.imgur.com/cBPNJFs.png)
 
-### Hole Page 
+### ->Hole Page 
 (https://i.imgur.com/c1xdJIu.png)
 
-### Edit User 
+### ->Edit User 
 (https://i.imgur.com/MdZz6D3.png)
 
-### ScoreCard 
+### ->ScoreCard 
 (https://i.imgur.com/gvCFQFi.png)
