@@ -39,19 +39,23 @@ const UserSchema = new Schema({
 
     firstName: {
         type: String, 
-        required: [true, 'first name is required!']
+        required: false, 
+        default: 'First Name'
     }, 
     lastName: {
         type: String, 
-        required: [true, 'last name is required']
+        required: false,
+        default: 'Last Name'
     }, 
     email: {
         type: String, 
-        required: [true, 'email is required!']
+        required: false, 
+        default: 'Email'
     }, 
     handicap: {
         type: Number, 
-        required: [true, 'handicap is required!']
+        required: false, 
+    
     },
     photoURL: {
         type: String, 

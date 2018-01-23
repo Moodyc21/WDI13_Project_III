@@ -37,111 +37,111 @@ User.remove({}).then(() => {
         holeNumber: 1,
         par: 4,
         yards: 350,
-        strokes: '',
+        strokes: ''
     })
     const holeTwo = new Holes({
         holeNumber: 2,
         par: 3,
         yards: 180,
-        strokes: '',
+        strokes: ''
     })
     const holeThree = new Holes({
         holeNumber: 3,
         par: 4,
         yards: 415,
-        strokes: '',
+        strokes: ''
     })
     const holeFour = new Holes({
         holeNumber: 4,
         par: 5,
         yards: 475,
-        strokes: '',
+        strokes: ''
     })
     const holeFive = new Holes({
         holeNumber: 5,
         par: 4,
         yards: 320,
-        strokes: '',
+        strokes: ''
     })
     const holeSix = new Holes({
         holeNumber: 6,
         par: 4,
         yards: 420,
-        strokes: '',
+        strokes: ''
     })
     const holeSeven = new Holes({
         holeNumber: 7,
         par: 5,
         yards: 480,
-        strokes: '',
+        strokes: ''
     })
     const holeEight = new Holes({
         holeNumber: 8,
         par: 3,
         yards: 170,
-        strokes: '',
+        strokes: ''
     })
     const holeNine = new Holes({
         holeNumber: 9,
         par: 4,
         yards: 400,
-        strokes: '',
+        strokes: ''
     })
     const holeTen = new Holes({
         holeNumber: 10,
         par: 3,
         yards: 175,
-        strokes: '',
+        strokes: ''
     })
     const holeEleven = new Holes({
         holeNumber: 11,
         par: 4,
         yards: 360,
-        strokes: '',
+        strokes: ''
     })
     const holeTwelve = new Holes({
         holeNumber: 12,
         par: 5,
         yards: 500,
-        strokes: '',
+        strokes: ''
     })
     const holeThirteen = new Holes({
         holeNumber: 13,
         par: 4,
         yards: 300,
-        strokes: '',
+        strokes: ''
     })
     const holeFourteen = new Holes({
         holeNumber: 14,
         par: 3,
         yards: 175,
-        strokes: '',
+        strokes: ''
     })
     const holeFifteen = new Holes({
         holeNumber: 15,
         par: 5,
         yards: 530,
-        strokes: '',
+        strokes: ''
     })
     const holeSixteen = new Holes({
         holeNumber: 16,
         par: 4,
         yards: 320,
-        strokes: '',
+        strokes: ''
     })
     const holeSeventeen = new Holes({
         holeNumber: 17,
         par: 3,
         yards: 190,
-        strokes: '',
+        strokes: ''
     })
     const holeEighteen = new Holes({
         holeNumber: 18,
         par: 4,
         yards: 340,
-        strokes: '',
+        strokes: ''
     })
-    
+
     score.myRound.push(holeOne, 
         holeTwo, 
         holeThree, 
@@ -177,3 +177,4 @@ User.remove({}).then(() => {
       Disconnected from MongoDB
     `)
 })
+
