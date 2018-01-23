@@ -16,7 +16,7 @@ const HoleSchema = new Schema({
     },
     strokes: {
         type: Number, 
-        required: [true, 'strokes are required!']
+        required: [false, 'strokes are not required!']
     }
 },
 {
