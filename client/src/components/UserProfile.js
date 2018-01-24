@@ -4,14 +4,19 @@ import { Link } from 'react-router-dom';
 
 class UserProfile extends Component {
     render() {
+        console.log(this.props.user)
         return (
             <div>
                 <h1>Golfer's Profile</h1>
+                
+                <div>
+                
+                </div>
 
                 <div>Full Name: </div>
                 <div>Email: </div>
                 <div>Handicap: </div>
-                <div>Scorecard: </div>
+
 
                 <Link to="/">Home</Link>
                 <br/>

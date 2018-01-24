@@ -12,7 +12,7 @@ class Holes extends Component {
             <h3>Par:</h3>
             
             
-            <img src="" alt=""/>
+         
             
             <button>Finished Hole</button>
             </div>

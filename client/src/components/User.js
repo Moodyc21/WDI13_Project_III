@@ -38,7 +38,9 @@ const User = (props) => {
         
       <br/> 
 
-
+      <button onClick={() => {props.deleteUser(props.user)}}>
+        Play!
+      </button>
 
 <button onClick={() => {props.deleteUser(props.user)}}>
         Delete Golfer

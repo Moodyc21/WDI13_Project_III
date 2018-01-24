@@ -27,7 +27,7 @@ User.remove({}).then(() => {
         lastName: 'Salabanzi',
         email: 'SalaB21@gmail.com',
         handicap: 4,
-        photoURL: 'https://i.imgur.com/WSOJyR1b.jpg'
+        photoURL: "https://i.imgur.com/WSOJyR1b.jpg"
     })
 
     const score = new Scorecard({

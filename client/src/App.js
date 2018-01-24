@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import axios from 'axios'
 import Home from './components/Home'
 import NewUser from './components/NewUser'
 import UserPage from './components/UserPage'
@@ -8,16 +9,47 @@ import EditUser from './components/EditUser'
 import Holes from './components/Holes'
 
 class App extends Component {
+  constructor() {
+    super()
+
+  this.state = {
+    users: []
+  }
+}
+
+ getUsers = () => {
+       axios.get('/api/users').then((response) => {
+      console.log(response.data)
+      const users = response.data
+      this.setState({users})
+     })
+    }
+
+  // createUser = async () => {
+  //   const response = await axios.post(`/api/users`)
+  //   const newUser = response.data
+  //   const newUsers = [...this.state.users]
+  //   newUsers.unshift(newUser)
+  //   this.setState({users: newUsers})
+  // }
+
+  componentWillMount () {
+    this.getUsers()
+    
+  }
+
+  
 
 
   render() {
+    console.log(this.state.users)
     const HomeComponent = () => (<Home/>)
     const NewUserComponent = () => (<NewUser/>)
-    const UserProfileComponent = () => (<UserProfile/>)
+    const UserProfileComponent = () => (<UserProfile user={this.state.users[0]} {...this.props}/>)
     const EditUserComponent = () => (<EditUser/>)
     const HolesComponent = () => (<Holes/>)
 
-
+    
     return (
       <Router>
         <div>
