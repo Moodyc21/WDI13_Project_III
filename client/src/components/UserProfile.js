@@ -27,7 +27,7 @@ const ImgWrapper = styled.div`
 
 const LinkWrapper = styled.div`
         display: flex;
-        justify-content: center;
+        
         a {
             font-size: x-large;
             padding: 5px;
@@ -44,7 +44,17 @@ const UserInfo = styled.div`
             color: white;
             text-align: center;
         }
+        span {
+            color: goldenrod;
+            
+        }
 `
+const NavBar = styled.div`
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+`
+
 
 
 class UserProfile extends Component {
@@ -52,32 +62,35 @@ class UserProfile extends Component {
         console.log(this.props.currentUser)
         return (
             <ProfileWrapper>
+        <NavBar>
+            <LinkWrapper>
+                <Link to="/">Home</Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                <Link to='/editUser'>Edit User</Link>
+                </LinkWrapper>
+        </NavBar>
                 <h1>Profile</h1>
+               
                 
                 <ImgWrapper>
                 <img src={this.props.photo} alt="profile photo"/>
                 </ImgWrapper>
 
-                <UserInfo><p>Full Name: {this.props.firstName} {this.props.lastName} </p>
-                <p>Email: {this.props.email} </p>
-                <p>Handicap: {this.props.handicap}</p></UserInfo>
-
-            <LinkWrapper>
-                <Link to="/">Home</Link>
-                </LinkWrapper>
-                                <br/>
+                <UserInfo><p><span>Full Name:</span> {this.props.firstName} {this.props.lastName} </p>
+                <p><span>Email:</span> {this.props.email} </p>
+                <p><span>Handicap:</span> {this.props.handicap}</p></UserInfo>
+         
               <LinkWrapper>                  
                 <Link to='/holes'>Play</Link>
                 </LinkWrapper>
-                <br/>
+                
                 
                 <LinkWrapper>
                 <Link to='/scoreCard'>Scorecard</Link>
                 </LinkWrapper>
-                <br/>
-                <LinkWrapper>
-                <Link to='/editUser'>Edit User</Link>
-                </LinkWrapper>
+              
+                
             </ProfileWrapper>
         );
     }
