@@ -10,7 +10,7 @@ class UserProfile extends Component {
                 <h1>Golfer's Profile</h1>
                 
                 <div>
-                
+                <img src={this.props.photo} alt="profile photo"/>
                 </div>
 
                 <div>Full Name: </div>

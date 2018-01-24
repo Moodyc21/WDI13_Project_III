@@ -19,6 +19,9 @@ const LinkWrapper = styled.div `
             padding: 5px;
             color: white;
         }
+        a:hover {
+            color: #C40808;
+        }
         `
 
 const ImgWrapper = styled.div `

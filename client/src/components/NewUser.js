@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 
 const FormWrapper = styled.div`
         background-color: #0E3F8A;
@@ -45,45 +46,78 @@ const SubmitButton = styled.div`
 `
 
 class NewUser extends Component {
+    constructor () {
+        super()
+        this.state = {
+            user: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                handicap: '',
+                photoURL: ''
+            },
+            redirect: false
+        }
+    }
+handleChange = (e) => {
+    const updatedUser = {...this.state.user}
+    const inputField = e.target.name 
+    const inputValue = e.target.value
+    updatedUser[inputField] = inputValue
+
+    this.setState({user: updatedUser})
+}
+
+handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.createNewUser(this.state.user)
+    this.setState({redirect: true})
+}
+
     render () {
+        if (this.state.redirect) {
+            return (<Redirect to={{pathname: '/userProfile', 
+        state: { fromDashboard: true }
+    }}/>)
+        }
         return (
             <FormWrapper>
                 <h1>Create <br/> User</h1>
                 <FormColumn>
-                    <form >
+                    <form onSubmit={this.handleSubmit}>
                         <LabelStyle>
-                        <label>
+                        <label htmlFor='firstName'>
                             {/* First Name */}
                             
-                            <input type="text" placeholder='First Name'/>
+                            <input type="text" name='firstName' onChange={this.handleChange} value={this.state.user.firstName} placeholder='First Name'/>
                         </label>
                         </LabelStyle>
                         <LabelStyle>
                         <label>
                             {/* Last Name */}
                             
-                            <input type="text" placeholder='Last Name'/>
+                            <input type="text" name='lastName' onChange={this.handleChange} value={this.state.user.lastName} placeholder='Last Name'/>
                         </label>
                         </LabelStyle>
                         <LabelStyle>
                         <label>
                             {/* Email */}
                            
-                            <input type="text" placeholder='Email'/>
+                            <input type="text" name='email' onChange={this.handleChange} value={this.state.user.email} placeholder='Email'/>
                         </label>
                         </LabelStyle>
                         <LabelStyle>
                         <label>
                             {/* Handicap */}
                             
-                            <input type="text" placeholder='Handicap'/>
+                            <input type="Number" name='handicap' onChange={this.handleChange} value={this.state.user.handicap} placeholder='Handicap'/>
                         </label>
                         </LabelStyle>
                         <LabelStyle>
                         <label>
                             {/* PhotoURL */}
                             
-                            <input type="text" placeholder='PhotoURL'/>
+                            <input type="text" name='photoURL' onChange={this.handleChange} value={this.state.user.photoURL} placeholder='PhotoURL'/>
                         </label>
                         </LabelStyle>
                         <LabelStyle>

@@ -7,13 +7,20 @@ import UserPage from './components/UserPage'
 import UserProfile from './components/UserProfile'
 import EditUser from './components/EditUser'
 import Holes from './components/Holes'
+import styled from 'styled-components'
 
 class App extends Component {
   constructor() {
     super()
 
   this.state = {
-    users: []
+    currentUser: {
+      firstName: 'Bastien',
+      lastName: 'Salabanzi',
+      email: 'SalaB21@gmail.com',
+      handicap: 5,
+      photoURL: 'https://i.imgur.com/WSOJyR1s.jpg'
+    }
   }
 }
 
@@ -33,6 +40,16 @@ class App extends Component {
   //   this.setState({users: newUsers})
   // }
 
+  createNewUser = (createUserInfo) => {
+    const newUser = {...this.state.currentUser}
+    newUser.firstName = createUserInfo.firstName
+    newUser.lastName = createUserInfo.lastName
+    newUser.email = createUserInfo.email
+    newUser.handicap = createUserInfo.handicap
+    newUser.photoURL = createUserInfo.photoURL
+    this.setState({currentUser: newUser})
+  }
+
   componentWillMount () {
     this.getUsers()
     
@@ -44,8 +61,8 @@ class App extends Component {
   render() {
     console.log(this.state.users)
     const HomeComponent = () => (<Home/>)
-    const NewUserComponent = () => (<NewUser/>)
-    const UserProfileComponent = () => (<UserProfile user={this.state.users[0]} {...this.props}/>)
+    const NewUserComponent = () => (<NewUser user={this.state.currentUser} createNewUser={this.createNewUser}/>)
+    const UserProfileComponent = () => (<UserProfile firstName={this.state.currentUser.firstName} lastName={this.state.currentUser.lastName} handicap={this.state.currentUser.handicap} email={this.state.currentUser.email} photo={this.state.currentUser.photoURL} {...this.props}/>)
     const EditUserComponent = () => (<EditUser/>)
     const HolesComponent = () => (<Holes/>)
 
