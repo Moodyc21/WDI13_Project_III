@@ -13,9 +13,9 @@ class UserProfile extends Component {
                 <img src={this.props.photo} alt="profile photo"/>
                 </div>
 
-                <div>Full Name: </div>
-                <div>Email: </div>
-                <div>Handicap: </div>
+                <div>Full Name: {this.props.firstName} {this.props.lastName} </div>
+                <div>Email: {this.props.email} </div>
+                <div>Handicap: {this.props.handicap} </div>
 
 
                 <Link to="/">Home</Link>

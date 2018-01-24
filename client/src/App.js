@@ -39,14 +39,22 @@ class App extends Component {
   //   newUsers.unshift(newUser)
   //   this.setState({users: newUsers})
   // }
+//   async componentWillMount () {
+//     const response = await axios.get (`/api/users`)
+//     this.setState({users: response.data})
+// }
 
-  createNewUser = (createUserInfo) => {
-    const newUser = {...this.state.currentUser}
-    newUser.firstName = createUserInfo.firstName
-    newUser.lastName = createUserInfo.lastName
-    newUser.email = createUserInfo.email
-    newUser.handicap = createUserInfo.handicap
-    newUser.photoURL = createUserInfo.photoURL
+  createNewUser = async (createUserInfo) => {
+      const response = await axios.post(`/api/users`)
+      const newUser = response.data
+      
+    const newUsers = [...this.state.currentUser]
+    newUsers.firstName = createUserInfo.firstName
+    newUsers.lastName = createUserInfo.lastName
+    newUsers.email = createUserInfo.email
+    newUsers.handicap = createUserInfo.handicap
+    newUsers.photoURL = createUserInfo.photoURL
+    newUsers.unshift(newUser)
     this.setState({currentUser: newUser})
   }
 

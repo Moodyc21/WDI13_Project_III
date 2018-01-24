@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 
 const FormWrapper = styled.div`
         background-color: #0E3F8A;
@@ -59,6 +60,7 @@ class NewUser extends Component {
             redirect: false
         }
     }
+
 handleChange = (e) => {
     const updatedUser = {...this.state.user}
     const inputField = e.target.name 
@@ -122,7 +124,7 @@ handleSubmit = (e) => {
                         </LabelStyle>
                         <LabelStyle>
                             <SubmitButton>
-                        <input type='submit' value='Submit'/>
+                        <input type='submit' value='Submit' />
                         </SubmitButton>
                         </LabelStyle>
                     </form>
