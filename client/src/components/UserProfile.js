@@ -8,15 +8,21 @@ class UserProfile extends Component {
             <div>
                 <h1>Golfer's Profile</h1>
 
-                <div>Full Name: {this.props.firstName} {this.props.lastName}</div>
-                <div>Email: {this.props.email}</div>
-                <div>Handicap: {this.props.handicap}</div>
-                <div><a href={this.props.Scorecard}>Scorecard</a></div>
+                <div>Full Name: </div>
+                <div>Email: </div>
+                <div>Handicap: </div>
+                <div>Scorecard: </div>
 
                 <Link to="/">Home</Link>
+                <br/>
+                <Link to='/holes'>Play</Link>
+                <br/>
+                <Link to='/scoreCard'>Scorecard</Link>
+                <br/>
+                <Link to='/editUser'>Edit User</Link>
             </div>
         );
     }
 }
 
-export default UserProfile;
+export default UserProfile

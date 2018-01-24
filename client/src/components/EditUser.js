@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class NewUser extends Component {
+class EditUser extends Component {
     render () {
         return (
             <div>
-                <h1>Create a New User</h1>
+                <h1>Edit User</h1>
                 <div>
                     <form>
                         <label>
@@ -37,4 +37,4 @@ class NewUser extends Component {
     }
 }
 
-export default NewUser
+export default EditUser
