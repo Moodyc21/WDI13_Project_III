@@ -16,6 +16,7 @@ const LinkWrapper = styled.div `
         justify-content: center;
         a {
             font-size: x-large;
+            padding: 5px;
             color: white;
         }
         `
