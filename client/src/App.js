@@ -13,80 +13,72 @@ class App extends Component {
   constructor() {
     super()
 
-  this.state = {
-    currentUser: {
-      firstName: 'Bastien',
-      lastName: 'Salabanzi',
-      email: 'SalaB21@gmail.com',
-      handicap: 5,
-      photoURL: 'https://i.imgur.com/WSOJyR1s.jpg'
+    this.state = {
+      users: [],
+      currentUser: {
+        firstName: '',
+        lastName: '',
+        handicap: '',
+        email: '',
+        photoURL: ''
+      }
     }
   }
-}
 
- getUsers = () => {
-       axios.get('/api/users').then((response) => {
-      console.log(response.data)
-      const users = response.data
-      this.setState({users})
-     })
-    }
+  getUsers = () => {
+    axios
+      .get('/api/users')
+      .then((response) => {
+        console.log(response.data)
+        const users = response.data
+        this.setState({users})
+      })
+  }
 
-  // createUser = async () => {
-  //   const response = await axios.post(`/api/users`)
-  //   const newUser = response.data
-  //   const newUsers = [...this.state.users]
-  //   newUsers.unshift(newUser)
-  //   this.setState({users: newUsers})
-  // }
-//   async componentWillMount () {
-//     const response = await axios.get (`/api/users`)
-//     this.setState({users: response.data})
-// }
+  // createUser = async () => {   const response = await axios.post(`/api/users`)
+  //  const newUser = response.data   const newUsers = [...this.state.users]
+  // newUsers.unshift(newUser)   this.setState({users: newUsers}) }   async
+  // componentWillMount () {     const response = await axios.get (`/api/users`)
+  //   this.setState({users: response.data}) }
 
   createNewUser = async (createUserInfo) => {
-      const response = await axios.post(`/api/users`)
-      const newUser = response.data
-      
-    const newUsers = [...this.state.currentUser]
-    newUsers.firstName = createUserInfo.firstName
-    newUsers.lastName = createUserInfo.lastName
-    newUsers.email = createUserInfo.email
-    newUsers.handicap = createUserInfo.handicap
-    newUsers.photoURL = createUserInfo.photoURL
+    const response = await axios.post(`/api/users`, createUserInfo)
+    const newUser = response.data
+
+    const newUsers = [...this.state.users]
     newUsers.unshift(newUser)
-    this.setState({currentUser: newUser})
+    this.setState({users: newUsers, currentUser: newUser})
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.getUsers()
-    
+
   }
-
-  
-
 
   render() {
     console.log(this.state.users)
     const HomeComponent = () => (<Home/>)
-    const NewUserComponent = () => (<NewUser user={this.state.currentUser} createNewUser={this.createNewUser}/>)
-    const UserProfileComponent = () => (<UserProfile firstName={this.state.currentUser.firstName} lastName={this.state.currentUser.lastName} handicap={this.state.currentUser.handicap} email={this.state.currentUser.email} photo={this.state.currentUser.photoURL} {...this.props}/>)
+    const NewUserComponent = () => (<NewUser createNewUser={this.createNewUser}/>)
+    const UserProfileComponent = () => (<UserProfile
+      firstName={this.state.currentUser.firstName}
+      lastName={this.state.currentUser.lastName}
+      handicap={this.state.currentUser.handicap}
+      email={this.state.currentUser.email}
+      photo={this.state.currentUser.photoURL}
+      {...this.props}/>)
     const EditUserComponent = () => (<EditUser/>)
     const HolesComponent = () => (<Holes/>)
 
-    
     return (
       <Router>
         <div>
-          
+
           <Switch>
-            <Route exact path='/' render={HomeComponent}/>
-            {/*<Route exact path='/users' render={UsersComponent}/>*/}
+            <Route exact path='/' render={HomeComponent}/> {/*<Route exact path='/users' render={UsersComponent}/>*/}
             <Route exact path='/newUser' render={NewUserComponent}/>
             <Route exact path='/userProfile' render={UserProfileComponent}/>
             <Route exact path='/editUser' render={EditUserComponent}/>
-            <Route exact path='/holes' render={HolesComponent}/>
-            {/*<Route exact path='/scorecard' render={ScorecardComponent}/> */}
+            <Route exact path='/holes' render={HolesComponent}/> {/*<Route exact path='/scorecard' render={ScorecardComponent}/> */}
           </Switch>
 
         </div>

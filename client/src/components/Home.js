@@ -18,6 +18,7 @@ const LinkWrapper = styled.div `
             font-size: x-large;
             padding: 5px;
             color: white;
+            text-decoration: none;
         }
         a:hover {
             color: #C40808;
