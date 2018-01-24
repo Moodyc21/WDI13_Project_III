@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const HomeWrapper = styled.div `
         h1 {
+            margin: 0 0 53.6px;
             font-size: 80px;
             text-align: center;
             color: White;
