@@ -67,13 +67,6 @@ class EditUser extends Component {
         }
     }
 
-    // handleChange = (e) => {     const updatedUser = {...this.state.user}
-    // const inputField = e.target.name     const inputValue = e.target.value
-    // updatedUser[inputField] = inputValue     this.setState({user: updatedUser}) }
-    // handleSubmit = (e) => {     e.preventDefault()
-    // this.props.createNewUser(this.state.user)     this.setState({redirect: true})
-    // }
-
     componentWillMount() {
 
         console.log("User in props: ", this.props.user)
@@ -90,27 +83,25 @@ class EditUser extends Component {
         console.log("User in state after set: ", this.state.user)
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        this.props.updateUser(this.props.user)
+        this.setState({redirect: true})
+    }
+
     render() {
         console.log("Rendering Edit User")
 
         if (this.state.redirect) {
             return (<Redirect
-                to={{
-                pathname: '/userProfile',
-                state: {
-                    fromDashboard: true
-                }
-            }}/>)
+                to={{pathname: '/userProfile', state: {fromDashboard: true}}}/>)
         }
         return (
             <FormWrapper>
                 <h1>Edit User</h1>
                 <img src={this.props.photo} alt="User Pic"/>
                 <FormColumn>
-                    <form
-                        onSubmit={() =>{this
-                        .props
-                        .updateUser(this.props.user)}}>
+                    <form onSubmit={this.handleSubmit}>
                         <LabelStyle>
                             <label>
                                 {/* First Name */}
@@ -119,10 +110,7 @@ class EditUser extends Component {
                                     type="text"
                                     name='firstName'
                                     onChange={(event) => {
-                                    this
-                                        .props
-                                        .handleChange(this.props.user, event)
-                                }}
+                                    this.props.handleChange(this.props.user, event)}}
                                     value={this.props.user.firstName}
                                     placeholder={this.props.firstName}/>
                             </label>

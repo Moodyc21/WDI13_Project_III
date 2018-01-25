@@ -36,18 +36,14 @@ class App extends Component {
       })
   }
 
-  // createUser = async () => {   const response = await axios.post(`/api/users`)
-  //  const newUser = response.data   const newUsers = [...this.state.users]
-  // newUsers.unshift(newUser)   this.setState({users: newUsers}) }   async
-  // componentWillMount () {     const response = await axios.get (`/api/users`)
-  //   this.setState({users: response.data}) }
+ 
 
   createNewUser = async (createUserInfo) => {
     const response = await axios.post(`/api/users`, createUserInfo)
     const newUser = response.data
 
     const newUsers = [...this.state.users]
-    newUsers.unshift(newUser)
+    newUsers.push(newUser)
     this.setState({users: newUsers, currentUser: newUser})
   }
 
@@ -65,13 +61,13 @@ class App extends Component {
 
     userToUpdate[event.target.name] = event.target.value
 
-    this.setState({users: updatedUsers, redirect: true})
+    this.setState({users: updatedUsers})
   }
 
   updateUser = async (user) => {
     try {
 
-      await axios.patch(`/api/users/${user._id}`, user) 
+      await axios.patch(`/api/users/${user._id}`, user)
 
     } catch (error) {
       console.log(error)
