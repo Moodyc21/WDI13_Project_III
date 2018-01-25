@@ -11,6 +11,8 @@ const ProfileWrapper = styled.div`
             text-align: center;
             color: white;
         }
+        width: 100vw;
+        height: 100vw;
 
 `
 

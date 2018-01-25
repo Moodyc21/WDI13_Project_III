@@ -66,7 +66,12 @@ class App extends Component {
       email={this.state.currentUser.email}
       photo={this.state.currentUser.photoURL}
       {...this.props}/>)
-    const EditUserComponent = () => (<EditUser/>)
+    const EditUserComponent = () => (<EditUser 
+      photo={this.state.currentUser.photoURL} 
+      firstName={this.state.currentUser.firstName}
+      lastName={this.state.currentUser.lastName}
+      handicap={this.state.currentUser.handicap}
+      email={this.state.currentUser.email}/>)
     const HolesComponent = () => (<Holes/>)
 
     return (
