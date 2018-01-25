@@ -34,7 +34,6 @@ router.delete('/:userId', async (req, res) => {
 router.patch('/:userId', async (req, res) => {
   try {
 
-    
     const updatedUser =
       await User.findByIdAndUpdate(req.params.userId, req.body, {new: true})
 

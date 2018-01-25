@@ -10,6 +10,7 @@ const ProfileWrapper = styled.div`
             margin: 0 auto;
             text-align: center;
             color: white;
+            
         }
         width: 100vw;
         height: 100vw;

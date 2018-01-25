@@ -21,7 +21,8 @@ class App extends Component {
         handicap: '',
         email: '',
         photoURL: ''
-      }
+      },
+      redirect: false
     }
   }
 
@@ -50,6 +51,33 @@ class App extends Component {
     this.setState({users: newUsers, currentUser: newUser})
   }
 
+  handleChange = (user, event) => {
+    console.log("Handle Change params:", user, event)
+    const updatedUsers = [...this.state.users] 
+
+    console.log("All Users:", updatedUsers)
+
+    const userToUpdate = updatedUsers.find((newUser) => {
+      return newUser._id === user._id
+    })
+
+    console.log("User To Update:", userToUpdate)
+
+    userToUpdate[event.target.name] = event.target.value
+
+    this.setState({users: updatedUsers, redirect: true})
+  }
+
+  updateUser = async (user) => {
+    try {
+
+      await axios.patch(`/api/users/${user._id}`, user) 
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   componentWillMount() {
     this.getUsers()
 
@@ -66,12 +94,16 @@ class App extends Component {
       email={this.state.currentUser.email}
       photo={this.state.currentUser.photoURL}
       {...this.props}/>)
-    const EditUserComponent = () => (<EditUser 
-      photo={this.state.currentUser.photoURL} 
-      firstName={this.state.currentUser.firstName}
-      lastName={this.state.currentUser.lastName}
-      handicap={this.state.currentUser.handicap}
-      email={this.state.currentUser.email}/>)
+    const EditUserComponent = () => (<EditUser
+      user={this.state.currentUser}
+      handleChange={this.handleChange}
+      updateUser={this.updateUser} 
+      // photo={this.state.currentUser.photoURL} 
+      // firstName={this.state.currentUser.firstName}
+      // lastName={this.state.currentUser.lastName}
+      // handicap={this.state.currentUser.handicap}
+      // email={this.state.currentUser.email} 
+      {...this.props}/>)
     const HolesComponent = () => (<Holes/>)
 
     return (
