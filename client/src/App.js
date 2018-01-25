@@ -94,11 +94,11 @@ class App extends Component {
       user={this.state.currentUser}
       handleChange={this.handleChange}
       updateUser={this.updateUser} 
-      // photo={this.state.currentUser.photoURL} 
-      // firstName={this.state.currentUser.firstName}
-      // lastName={this.state.currentUser.lastName}
-      // handicap={this.state.currentUser.handicap}
-      // email={this.state.currentUser.email} 
+      photo={this.state.currentUser.photoURL} 
+      firstName={this.state.currentUser.firstName}
+      lastName={this.state.currentUser.lastName}
+      handicap={this.state.currentUser.handicap}
+      email={this.state.currentUser.email} 
       {...this.props}/>)
     const HolesComponent = () => (<Holes/>)
 

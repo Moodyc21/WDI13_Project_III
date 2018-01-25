@@ -16,6 +16,8 @@ const FormWrapper = styled.div`
             font-size: 25px;
             color: white;
         }
+        width: 100%;
+        height: 100%;
 
 `
 

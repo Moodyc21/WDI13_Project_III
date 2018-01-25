@@ -26,8 +26,8 @@ const FormWrapper = styled.div `
             border-radius: 3px;
 
         }
-        width: 100vw;
-        height: 100vw;
+        width: 100%;
+        height: 100%;
 
 `
 
