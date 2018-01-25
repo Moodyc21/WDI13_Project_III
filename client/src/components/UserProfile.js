@@ -39,6 +39,7 @@ const LinkWrapper = styled.div`
         }
         a:hover {
             color: #C40808;
+            
         }
 `
 
@@ -68,6 +69,19 @@ const FooterBar = styled.div`
         width: 100vw;
         
 `
+const ImgLink = styled.div`
+            display: flex;
+            justify-content: space-between;
+        img {
+            max-height: 125px;
+            max-width: 125px;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+        img:hover {
+            border: 2px solid goldenrod;
+        }
+`
 
 
 
@@ -94,6 +108,10 @@ class UserProfile extends Component {
                 <UserInfo><p><span>Full Name:</span> {this.props.firstName} {this.props.lastName} </p>
                 <p><span>Email:</span> {this.props.email} </p>
                 <p><span>Handicap:</span> {this.props.handicap}</p></UserInfo>
+                <ImgLink>
+                <img src="https://imgur.com/dxEZDxP.png" alt=""/>
+                <img src="https://i.imgur.com/gvCFQFib.png" alt=""/>
+                </ImgLink>
             <FooterBar>
               <LinkWrapper>                  
                 <Link to='/holes'>Play</Link>
@@ -103,7 +121,9 @@ class UserProfile extends Component {
                 <LinkWrapper>
                 <Link to='/scoreCard'>Scorecard</Link>
                 </LinkWrapper>
+                
                 </FooterBar>
+                
               
                 
             </ProfileWrapper>
