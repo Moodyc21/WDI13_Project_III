@@ -40,6 +40,7 @@ const LinkWrapper = styled.div`
 `
 
 const UserInfo = styled.div`
+
         p {
             color: white;
             text-align: center;
@@ -53,6 +54,16 @@ const NavBar = styled.div`
         display: flex;
         justify-content: space-between;
         width: 100vw;
+        border-bottom: 2px solid white;
+       
+`
+
+const FooterBar = styled.div`
+        border-top: 2px solid white;
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+        
 `
 
 
@@ -80,7 +91,7 @@ class UserProfile extends Component {
                 <UserInfo><p><span>Full Name:</span> {this.props.firstName} {this.props.lastName} </p>
                 <p><span>Email:</span> {this.props.email} </p>
                 <p><span>Handicap:</span> {this.props.handicap}</p></UserInfo>
-         
+            <FooterBar>
               <LinkWrapper>                  
                 <Link to='/holes'>Play</Link>
                 </LinkWrapper>
@@ -89,6 +100,7 @@ class UserProfile extends Component {
                 <LinkWrapper>
                 <Link to='/scoreCard'>Scorecard</Link>
                 </LinkWrapper>
+                </FooterBar>
               
                 
             </ProfileWrapper>
