@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import {Redirect} from 'react-router-dom'
-import axios from 'axios'
 
 const FormWrapper = styled.div `
         background-color: #0E3F8A;

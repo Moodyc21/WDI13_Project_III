@@ -4,29 +4,25 @@ const User = (props) => {
     return (
         <div>
 
-<img src={props.user.photoURL} alt="Golfer Profile Pic"/> 
-<br/>
+            <img src={props.user.photoURL} alt="Golfer Profile Pic"/> 
 
  <input type="text"
         name="firstName"
         value={props.user.firstName}
         onChange={(event) => props.handleChange(props.user, event)}
         onBlur={() => {props.updateUser(props.user)}}/>
-<br/>
 
 <input type="text"
         name="lastName"
         value={props.user.lastName}
         onChange={(event) => props.handleChange(props.user, event)}
         onBlur={() => {props.updateUser(props.user)}}/>
-<br/>
 
 <input type="text"
         name="email"
         value={props.user.email}
         onChange={(event) => props.handleChange(props.user, event)}
         onBlur={() => {props.updateUser(props.user)}}/>
-<br/>
 
 <input type="Number"
         name="handicap"
@@ -36,11 +32,9 @@ const User = (props) => {
 
  
         
-      <br/> 
+       
 
-      <button onClick={() => {props.deleteUser(props.user)}}>
-        Play!
-      </button>
+
 
 <button onClick={() => {props.deleteUser(props.user)}}>
         Delete Golfer

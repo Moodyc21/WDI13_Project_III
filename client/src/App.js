@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import axios from 'axios'
 import Home from './components/Home'
+import UserList from './components/UserList'
 import NewUser from './components/NewUser'
+import ExistingUser from'./components/ExistingUser'
 import UserPage from './components/UserPage'
 import UserProfile from './components/UserProfile'
 import EditUser from './components/EditUser'
@@ -43,9 +45,22 @@ class App extends Component {
     const newUser = response.data
 
     const newUsers = [...this.state.users]
+
     newUsers.push(newUser)
     this.setState({users: newUsers, currentUser: newUser})
   }
+  deleteUser = async (user) => {
+    try {
+        await axios.delete(`/api/users/${user._id}`)
+
+        const indexToDelete = this.state.users.indexOf(user)
+        const newUsers = [...this.state.users]
+        newUsers.splice(indexToDelete, 1)
+        this.setState({users: newUsers})
+    } catch(error) {
+        console.log(error)
+    }
+}
 
   handleChange = (user, event) => {
     console.log("Handle Change params:", user, event)
@@ -83,6 +98,8 @@ class App extends Component {
     console.log(this.state.users)
     const HomeComponent = () => (<Home/>)
     const NewUserComponent = () => (<NewUser createNewUser={this.createNewUser}/>)
+    const UserListComponent = () => (<UserList users={this.state.users} deleteUser={this.deleteUser} {...this.props}/>)
+    const ExistingUserComponent = () => (<ExistingUser user={this.state.users} {...this.props}/>)
     const UserProfileComponent = () => (<UserProfile
       firstName={this.state.currentUser.firstName}
       lastName={this.state.currentUser.lastName}
@@ -109,6 +126,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={HomeComponent}/> {/*<Route exact path='/users' render={UsersComponent}/>*/}
             <Route exact path='/newUser' render={NewUserComponent}/>
+            <Route exact path='/userList' render={UserListComponent}/>
+            <Route exact path='/existingUser' render={ExistingUserComponent}/>
             <Route exact path='/userProfile' render={UserProfileComponent}/>
             <Route exact path='/editUser' render={EditUserComponent}/>
             <Route exact path='/holes' render={HolesComponent}/> {/*<Route exact path='/scorecard' render={ScorecardComponent}/> */}

@@ -47,6 +47,7 @@ class Home extends Component {
                 </ImgWrapper>
                 <LinkWrapper>
                     <Link to='/newUser'>New User</Link>
+                    <Link to='/userList'>User List</Link>
                 </LinkWrapper>
 
             </HomeWrapper>

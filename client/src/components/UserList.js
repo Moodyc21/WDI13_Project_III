@@ -1,5 +1,5 @@
 import React from 'react'
-import User from './User'
+import ExistingUser from './ExistingUser'
 
 const UserList = (props) => {
 
@@ -8,7 +8,7 @@ const UserList = (props) => {
             {
                 props.users.map((user) => {
                     return(
-                        <User user={user} {...props} key={user._id}/>
+                        <ExistingUser deleteUser={props.deleteUser} user={user} {...props} key={user._id}/>
                     )
                 })
             }
