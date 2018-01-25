@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.delete('/:userId', async (req, res) => {
+router.delete('/users/:userId', async (req, res) => {
   try {
     await User.findByIdAndRemove(req.params.userId) 
   } catch (error) {

@@ -18,8 +18,8 @@ const FormWrapper = styled.div `
         img {
             display: flex;
             margin: 0 auto;
-            max-height: 200px;
-            max-width: 200px;
+            height: 200px;
+            width: 200px;
             border: 2px solid white;
             border-radius: 3px;
 

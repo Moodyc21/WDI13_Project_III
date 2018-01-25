@@ -23,8 +23,8 @@ const ImgWrapper = styled.div`
             margin: 0 auto;
             border: 2px solid white;
             border-radius: 3px;
-            max-heigth: 200px;
-            max-width: 200px;
+            heigth: 200px;
+            width: 200px;
         }
 `
 
@@ -73,8 +73,8 @@ const ImgLink = styled.div`
             display: flex;
             justify-content: space-between;
         img {
-            max-height: 125px;
-            max-width: 125px;
+            height: 125px;
+            width: 125px;
             border: 2px solid white;
             border-radius: 5px;
         }
