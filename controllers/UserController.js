@@ -12,6 +12,19 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/:userId', async (req, res) => {
+  const userId = req.params.userId
+  try {
+    const user = await User.findById(userId)
+    res.json({user})
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(500)
+  }
+
+  }
+)
+
 router.post('/', async (req, res) => {
   try {
     const newUser = await User.create(req.body) 
@@ -22,7 +35,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.delete('/users/:userId', async (req, res) => {
+router.delete('/:userId', async (req, res) => {
   try {
     await User.findByIdAndRemove(req.params.userId) 
   } catch (error) {

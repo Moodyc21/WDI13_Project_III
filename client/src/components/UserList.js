@@ -8,7 +8,7 @@ const UserList = (props) => {
             {
                 props.users.map((user) => {
                     return(
-                        <ExistingUser deleteUser={props.deleteUser} user={user} {...props} key={user._id}/>
+                        <ExistingUser deleteUser={props.deleteUser} user={user} {...props} key={user._id} userId={user._id}/>
                     )
                 })
             }

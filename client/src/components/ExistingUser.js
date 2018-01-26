@@ -99,7 +99,7 @@ const LinkWrapper = styled.div`
           <Link to='/scorecard'>Play!</Link>
           </LinkWrapper>
     <SubmitButton>
-    <button onClick={() => {props.deleteUser(props.users)}}>
+    <button onClick={() => {props.deleteUser(props.user)}}>
             Delete Golfer
           </button>
     </SubmitButton>

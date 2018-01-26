@@ -51,8 +51,8 @@ class App extends Component {
   }
   deleteUser = async (user) => {
     try {
-        await axios.delete(`/api/users/${user._id}`, user)
-
+        await axios.delete(`/api/users/${user._Id}`)
+console.log(user._id)
         const indexToDelete = this.state.users.indexOf(user)
         console.log(indexToDelete)
         const newUsers = [...this.state.users]
