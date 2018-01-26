@@ -5,7 +5,6 @@ import Home from './components/Home'
 import UserList from './components/UserList'
 import NewUser from './components/NewUser'
 import ExistingUser from'./components/ExistingUser'
-import UserPage from './components/UserPage'
 import UserProfile from './components/UserProfile'
 import EditUser from './components/EditUser'
 import Holes from './components/Holes'
@@ -24,6 +23,8 @@ class App extends Component {
         email: '',
         photoURL: ''
       },
+      user: {},
+
       redirect: false
     }
   }
@@ -37,6 +38,16 @@ class App extends Component {
         this.setState({users})
       })
   }
+
+  showUser = (userId) => {
+    axios.get(`api/users/userProfile/${userId}`).then((response) => {
+      console.log(response.data)
+      const user = response.data
+      this.setState({ currentUser: user })
+
+    })
+  }
+
 
  
 
@@ -94,21 +105,18 @@ console.log(user._id)
 
   componentWillMount() {
     this.getUsers()
+  
 
   }
 
   render() {
-    console.log(this.state.users)
+    console.log('this is current', this.state.user)
     const HomeComponent = () => (<Home/>)
     const NewUserComponent = () => (<NewUser createNewUser={this.createNewUser}/>)
-    const UserListComponent = () => (<UserList users={this.state.users} deleteUser={this.deleteUser} {...this.props}/>)
+    const UserListComponent = () => (<UserList users={this.state.users} deleteUser={this.deleteUser} showUser={this.showUser} {...this.props}/>)
     const ExistingUserComponent = () => (<ExistingUser user={this.state.users} {...this.props}/>)
     const UserProfileComponent = () => (<UserProfile
-      firstName={this.state.currentUser.firstName}
-      lastName={this.state.currentUser.lastName}
-      handicap={this.state.currentUser.handicap}
-      email={this.state.currentUser.email}
-      photo={this.state.currentUser.photoURL}
+      user={this.state.currentUser}
       {...this.props}/>)
     const EditUserComponent = () => (<EditUser
       user={this.state.currentUser}

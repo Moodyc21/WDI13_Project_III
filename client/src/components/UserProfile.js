@@ -86,6 +86,8 @@ const ImgLink = styled.div`
 
 
 class UserProfile extends Component {
+
+    
     render() {
         console.log(this.props.currentUser)
         return (
@@ -102,12 +104,12 @@ class UserProfile extends Component {
                
                 
                 <ImgWrapper>
-                <img src={this.props.photo} alt="profile photo"/>
+                <img src={this.props.user.photoURL} alt="profile photo"/>
                 </ImgWrapper>
 
-                <UserInfo><p><span>Full Name:</span> {this.props.firstName} {this.props.lastName} </p>
-                <p><span>Email:</span> {this.props.email} </p>
-                <p><span>Handicap:</span> {this.props.handicap}</p></UserInfo>
+                <UserInfo><p><span>Full Name:</span> {this.props.user.firstName} {this.props.user.lastName} </p>
+                <p><span>Email:</span> {this.props.user.email} </p>
+                <p><span>Handicap:</span> {this.props.user.handicap}</p></UserInfo>
                 <ImgLink>
                 <img src="https://imgur.com/dxEZDxP.png" alt=""/>
                 <img src="https://i.imgur.com/gvCFQFib.png" alt=""/>

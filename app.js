@@ -11,18 +11,18 @@ const mongoose = require('mongoose')
 
 const app = express()
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/idea-board
+mongoose.Promise = global.Promise
+mongoose.connect(process.env.MONGODB_URI)
 
-const connection = mongoose.connection;
+const connection = mongoose.connection
 connection.on('connected', () => {
-  console.log('Mongoose Connected Successfully');    
-}); 
+  console.log('Mongoose Connected Successfully')    
+}) 
 
-// If the connection throws an error
+
 connection.on('error', (err) => {
-  console.log('Mongoose default connection error: ' + err);
-}); 
+  console.log('Mongoose default connection error: ' + err)
+}) 
 
 app.use(express.static(__dirname + '/client/build'))
 
@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/client/build.index.html')
 })
 
-// view engine setup
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 

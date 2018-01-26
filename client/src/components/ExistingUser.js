@@ -56,8 +56,16 @@ const LinkWrapper = styled.div`
         }
 `
 
+
+
     const ExistingUser = (props) => {
         console.log("This are my props", props)
+        
+
+        const showUser = (event) => {
+            event.preventDefault()
+            this.props.showUser(props.userId)
+        }
 
         return (
             <UserWrapper>
@@ -99,9 +107,7 @@ const LinkWrapper = styled.div`
           <Link to='/scorecard'>Play!</Link>
           </LinkWrapper>
     <SubmitButton>
-    <button onClick={() => {props.deleteUser(props.user)}}>
-            Delete Golfer
-          </button>
+    <Link onClick={props.showUser} to={`userProfile/${props.userId}`}>View Profile</Link>
     </SubmitButton>
     </BoxWrapper>
             </UserWrapper>
