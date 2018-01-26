@@ -89,7 +89,8 @@ class UserProfile extends Component {
 
     
     render() {
-        console.log(this.props.currentUser)
+        console.log('Props for show', this.props.user.firstName)
+        
         return (
             <ProfileWrapper>
         <NavBar>
@@ -106,6 +107,7 @@ class UserProfile extends Component {
                 <ImgWrapper>
                 <img src={this.props.user.photoURL} alt="profile photo"/>
                 </ImgWrapper>
+                
 
                 <UserInfo><p><span>Full Name:</span> {this.props.user.firstName} {this.props.user.lastName} </p>
                 <p><span>Email:</span> {this.props.user.email} </p>

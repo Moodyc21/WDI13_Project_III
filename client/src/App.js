@@ -8,6 +8,7 @@ import ExistingUser from'./components/ExistingUser'
 import UserProfile from './components/UserProfile'
 import EditUser from './components/EditUser'
 import Holes from './components/Holes'
+import Scorecard from './components/Scorecard'
 import styled from 'styled-components'
 
 class App extends Component {
@@ -16,15 +17,7 @@ class App extends Component {
 
     this.state = {
       users: [],
-      currentUser: {
-        firstName: '',
-        lastName: '',
-        handicap: '',
-        email: '',
-        photoURL: ''
-      },
-      user: {},
-
+      currentUser: [],
       redirect: false
     }
   }
@@ -39,11 +32,17 @@ class App extends Component {
       })
   }
 
-  showUser = (userId) => {
-    axios.get(`api/users/userProfile/${userId}`).then((response) => {
+  showUser = (user) => {
+    console.log(user)
+    const userId = user._id
+    console.log(userId)
+    axios.get(`/api/users/userProfile/${userId}`).then((response) => {
+      console.log('state', this.state.users)
       console.log(response.data)
       const user = response.data
       this.setState({ currentUser: user })
+      console.log('This is current User show', this.state.currentUser)
+      console.log('This is users', this.state.users)
 
     })
   }
@@ -105,18 +104,18 @@ console.log(user._id)
 
   componentWillMount() {
     this.getUsers()
-  
-
+    
   }
 
   render() {
     console.log('this is current', this.state.user)
     const HomeComponent = () => (<Home/>)
     const NewUserComponent = () => (<NewUser createNewUser={this.createNewUser}/>)
-    const UserListComponent = () => (<UserList users={this.state.users} deleteUser={this.deleteUser} showUser={this.showUser} {...this.props}/>)
+    const UserListComponent = () => (<UserList currentUser={this.state.currentUser} users={this.state.users} showUser={this.showUser} deleteUser={this.deleteUser} {...this.props}/>)
     const ExistingUserComponent = () => (<ExistingUser user={this.state.users} {...this.props}/>)
     const UserProfileComponent = () => (<UserProfile
       user={this.state.currentUser}
+      users={this.state.users}
       {...this.props}/>)
     const EditUserComponent = () => (<EditUser
       user={this.state.currentUser}
@@ -129,6 +128,7 @@ console.log(user._id)
       email={this.state.currentUser.email} 
       {...this.props}/>)
     const HolesComponent = () => (<Holes/>)
+    const ScorecardComponent = () => (<Scorecard/>)
 
     return (
       <Router>
@@ -139,9 +139,10 @@ console.log(user._id)
             <Route exact path='/newUser' render={NewUserComponent}/>
             <Route exact path='/userList' render={UserListComponent}/>
             <Route exact path='/existingUser' render={ExistingUserComponent}/>
-            <Route exact path='/userProfile' render={UserProfileComponent}/>
+            <Route exact path='/userProfile/:userId' render={UserProfileComponent}/>
             <Route exact path='/editUser' render={EditUserComponent}/>
-            <Route exact path='/holes' render={HolesComponent}/> {/*<Route exact path='/scorecard' render={ScorecardComponent}/> */}
+            <Route exact path='/holes' render={HolesComponent}/> 
+            <Route exact path='/scorecard' render={ScorecardComponent}/>
           </Switch>
 
         </div>

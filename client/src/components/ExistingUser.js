@@ -62,13 +62,10 @@ const LinkWrapper = styled.div`
         console.log("This are my props", props)
         
 
-        const showUser = (event) => {
-            event.preventDefault()
-            this.props.showUser(props.userId)
-        }
-
+      
         return (
             <UserWrapper>
+                
                 
     <ImgWrapper>
     <img src={props.user.photoURL} alt="Golfer Profile Pic"/> 
@@ -107,7 +104,9 @@ const LinkWrapper = styled.div`
           <Link to='/scorecard'>Play!</Link>
           </LinkWrapper>
     <SubmitButton>
-    <Link onClick={props.showUser} to={`userProfile/${props.userId}`}>View Profile</Link>
+   <Link to={`/userProfile/${props.user._id}`}>
+    <button onClick = {() => {props.showUser(props.user)}}>View Profile</button>
+    </Link>
     </SubmitButton>
     </BoxWrapper>
             </UserWrapper>
