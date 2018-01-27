@@ -16,8 +16,8 @@ class App extends Component {
     super()
 
     this.state = {
+      currentUser: {},
       users: [],
-      currentUser: [],
       redirect: false
     }
   }
@@ -38,8 +38,9 @@ class App extends Component {
     console.log(userId)
     axios.get(`/api/users/userProfile/${userId}`).then((response) => {
       console.log('state', this.state.users)
-      console.log(response.data)
-      const user = response.data
+      console.log("Response from Express:", response.data)
+      const user = response.data //TODO: Refactor express api to return a user, NOT an object with a user in it
+      console.log('user', user)
       this.setState({ currentUser: user })
       console.log('This is current User show', this.state.currentUser)
       console.log('This is users', this.state.users)
@@ -115,7 +116,6 @@ console.log(user._id)
     const ExistingUserComponent = () => (<ExistingUser user={this.state.users} {...this.props}/>)
     const UserProfileComponent = () => (<UserProfile
       user={this.state.currentUser}
-      users={this.state.users}
       {...this.props}/>)
     const EditUserComponent = () => (<EditUser
       user={this.state.currentUser}
