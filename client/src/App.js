@@ -38,7 +38,7 @@ class App extends Component {
   }
   getScorecard = (userId) => {
     
-    axios.get(`/api/users/${this.state.currentUser._id}/scorecard`).then((response) => {
+    axios.get(`/api/users/userProfile/${this.state.currentUser._id}/scorecard`).then((response) => {
       console.log('Nah son', userId)
       console.log(response.data)
       const myScore = response.data

@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 const UserController = require('./controllers/UserController')
 app.use('/api/users', UserController)
 const ScorecardController = require('./controllers/ScorecardController')
-app.use('/api/users/:userId/scorecard', ScorecardController)
+app.use('/api/users/userProfile/:userId/scorecard', ScorecardController)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

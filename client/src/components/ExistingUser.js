@@ -7,11 +7,18 @@ const UserWrapper = styled.div`
         background-color: #0E3F8A;
         border: 2px solid white;
         padding: 10px;
+        @media(max-width: 800px) {
+            display: block;
+        }
 `
 const BoxWrapper = styled.div`
         display: flex;
         flex-direction: column;
         margin: 0 auto;
+        @media(max-width: 800px) {
+            align-items: center;
+        }
+       
         
 `
 
@@ -23,6 +30,14 @@ const ImgWrapper = styled.div`
             border: 2px solid white;
             border-radius: 3px;
         }
+        @media(max-width: 800px) {
+            img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+            }
+        
 `
 const InfoWrapper = styled.div`
         [type=text] {

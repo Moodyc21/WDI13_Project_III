@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../db/models/User')
 const Scorecard = require('../db/models/Scorecard')
 
-router.get('/scorecard', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const users = await User.find()
     res.json(users) 
