@@ -43,7 +43,7 @@
 
 ## Approach 
 
-- My approach was to come up with a design that was simple and straighforward. Something anyone could pick up and use and not even need instructions. Intuitive. The user creates his/her profile, selects or inputs a course and then starts counting his strokes. I wanted it to be mobile first and responsive/adaptive. Obviously, I did not think anyone would be golfing with their laptop handy. I wanted the scorecard to be dynamic and updatable. 
+-> My approach was to come up with a design that was simple and straighforward. Something anyone could pick up and use and not even need instructions. Intuitive. The user creates his/her profile, selects or inputs a course and then starts counting his strokes. I wanted it to be mobile first and responsive/adaptive. Obviously, I did not think anyone would be golfing with their laptop handy. I wanted the scorecard to be dynamic and updatable. 
 
 ## Unsolved-Problems
 
