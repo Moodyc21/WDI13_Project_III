@@ -34,12 +34,12 @@
 
 ## Technologies 
 
--> Styled-Components
--> React-Data-Table
--> JQuery
--> Heroku
--> Create-react-app
--> MongoDB
+- Styled-Components
+- React-Data-Table
+- JQuery
+- Heroku
+- Create-react-app
+- MongoDB
 
 ## Approach 
 
@@ -47,12 +47,12 @@
 
 ## Unsolved-Problems
 
--> Editing/Deleting individual strokes on scorecard
--> Pulling golf course api to populate real golf-courses
--> Building out visual scorecard
--> Building courses view
--> Having a single dynamic Holes view for all holes
--> Full CRUD for Holes
+- Editing/Deleting individual strokes on scorecard
+- Pulling golf course api to populate real golf-courses
+- Building out visual scorecard
+- Building courses view
+- Having a single dynamic Holes view for all holes
+- Full CRUD for Holes
 
 ## Notes-To-Self
 
