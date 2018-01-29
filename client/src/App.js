@@ -8,6 +8,7 @@ import ExistingUser from'./components/ExistingUser'
 import UserProfile from './components/UserProfile'
 import EditUser from './components/EditUser'
 import Holes from './components/Holes'
+import Hole from './components/Hole'
 import ScorecardList from './components/ScorecardList'
 import styled from 'styled-components'
 import Table from './components/Table'
@@ -36,15 +37,21 @@ class App extends Component {
         console.log('Whatup', this.state.users.myScore)
       })
   }
-  getScorecard = (userId) => {
+  getScorecard = () => {
     
     axios.get(`/api/users/userProfile/${this.state.currentUser._id}/scorecard`).then((response) => {
-      console.log('Nah son', userId)
       console.log(response.data)
       const myScore = response.data
       this.setState({myScore})
       console.log('myScore', myScore)
 
+    })
+  }
+
+  showScorecard = (user) => {
+    axios.get(`/api/users/userProfile/${this.state.currentUser._id}/scorecard/${this.state.currentUser.myScore._id}`).then((response) => {
+      const users = response.data
+      this.setState({myScore: users})
     })
   }
 
@@ -141,9 +148,11 @@ handleChange = (user, event) => {
     const UserListComponent = () => (<UserList currentUser={this.state.currentUser} users={this.state.users} showUser={this.showUser} deleteUser={this.deleteUser} {...this.props}/>)
     const ExistingUserComponent = () => (<ExistingUser user={this.state.users} {...this.props}/>)
     const UserProfileComponent = () => (<UserProfile
+      showScorecard={this.showScorecard}
       user={this.state.currentUser}
       {...this.props}/>)
     const EditUserComponent = () => (<EditUser
+      
       users={this.state.users}
       user={this.state.currentUser}
       updateUser={this.updateUser}
@@ -155,6 +164,7 @@ handleChange = (user, event) => {
       email={this.state.currentUser.email} 
       {...this.props}/>)
     const HolesComponent = () => (<Holes/>)
+    const HoleComponent = () => (<Hole showScorecard={this.state.showScorecard} myScore={this.state.myScore} {...this.props}  />)
     const ScorecardListComponent = () => (<ScorecardList users={this.state.users} myScore={this.state.myScore}/>)
 
     return (
@@ -168,8 +178,8 @@ handleChange = (user, event) => {
             <Route exact path='/existingUser' render={ExistingUserComponent}/>
             <Route exact path='/userProfile/:userId' render={UserProfileComponent}/>
             <Route exact path='/editUser/:userId' render={EditUserComponent}/>
-            <Route exact path='/holes' render={HolesComponent}/> 
-            <Route exact path='/scorecard/:scorecardId' render={ScorecardListComponent}/>
+            <Route exact path='/hole' render={HoleComponent}/> 
+            <Route exact path='userProfile/:userId/scorecard/:scorecardId' render={ScorecardListComponent}/>
           </Switch>
 
         </div>

@@ -47,14 +47,16 @@ class Holes extends Component {
     }
 
     render() {
+        console.log('MYSCORE:', this.props.myScore)
 
         return (
             <HolesWrapper>
-            <h1>Hole #</h1>
+            <h1>Hole #{this.props.myScore.myRound.holeNumber}</h1>
             
-            <h3>Length:</h3>
             
-            <h3>Par:</h3>
+            <h3>Length:{this.props.myScore.myRound.yards}</h3>
+            
+            <h3>Par:{this.props.myScore.myRound.par}</h3>
             
             <ImgWrapper>
             <button onClick={this.handleClick.bind(this)}> <img src="https://i.imgur.com/WudJ2rR.jpg" alt="Golfball"/></button>

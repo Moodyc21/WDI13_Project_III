@@ -126,11 +126,13 @@ class UserProfile extends Component {
                     </ImgLink>
                     <FooterBar>
                         <LinkWrapper>
-                            <Link to='/holes'>Play</Link>
+                            <Link to='/hole'>Play</Link>
                         </LinkWrapper>
 
                         <LinkWrapper>
-                            <Link to={`/api/users/${this.props.user._id}/scorecard`}>Scorecard</Link>
+                            <Link to={`/api/users/userProfile/${this.props.user._id}/scorecard/`}>
+                            <button onClick={() => {this.props.showScorecard(this.props.user)}}> Scorecard
+                                </button></Link>
                         </LinkWrapper>
 
                     </FooterBar>

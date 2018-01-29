@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.delete('/:userId', async (req, res) => {
+router.delete('/userList/:userId', async (req, res) => {
   try {
     await User.findByIdAndRemove(req.params.userId) 
   } catch (error) {
@@ -44,7 +44,7 @@ router.delete('/:userId', async (req, res) => {
   }
 })
 
-router.patch('/:userId', async (req, res) => {
+router.patch('/userList/:userId', async (req, res) => {
   try {
 
     const updatedUser =
