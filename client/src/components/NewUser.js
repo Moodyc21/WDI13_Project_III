@@ -79,7 +79,7 @@ handleSubmit = (e) => {
 
     render () {
         if (this.state.redirect) {
-            return (<Redirect to={{pathname: '/userProfile', 
+            return (<Redirect to={{pathname: '/userProfile/:userId', 
         state: { fromDashboard: true }
     }}/>)
         }

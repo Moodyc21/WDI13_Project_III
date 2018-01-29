@@ -57,42 +57,50 @@ const SubmitButton = styled.div `
 `
 
 class EditUser extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            user: {},
+            user: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                handicap: '',
+                photoURL: ''
+            },
             redirect: false
         }
+
     }
 
-    componentWillMount() {
+    // componentWillMount() {
 
-        console.log("User in props: ", this.props.user)
-        const currentUser = {
-            ...this.state.user
-        }
-        currentUser.firstName = this.props.user.firstName
-        currentUser.lastName = this.props.user.lastName
-        currentUser.email = this.props.user.email
-        currentUser.handicap = this.props.user.handicap
-        currentUser.photoURL = this.props.user.photoURL
+    //     console.log("User in props: ", this.props.user)
+    //     const currentUser = this.props.user
+    //     console.log('currentUser', currentUser)
+    //     currentUser.firstName = this.props.user.firstName
+    //     currentUser.lastName = this.props.user.lastName
+    //     currentUser.email = this.props.user.email
+    //     currentUser.handicap = this.props.user.handicap
+    //     currentUser.photoURL = this.props.user.photoURL
 
-        this.setState({user: currentUser })
-        console.log("User in state after set: ", this.state.user)
-    }
+    //     this.setState({ user: currentUser })
+    //     console.log("User in state after set: ", this.state)
+    // }
+  
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.updateUser(this.props.user)
+        this.props.updateUser(this.state.user)
         this.setState({redirect: true})
+        console.log("first name:", this.state.user.firstName)
     }
 
     render() {
-        console.log("Rendering Edit User")
+        console.log("Rendering Edit User:", this.state.user.firstName)
 
         if (this.state.redirect) {
             return (<Redirect
-                to={{pathname: '/userProfile', state: {fromDashboard: true}}}/>)
+                to={{pathname: `/userProfile/${this.props.user._id}`, state: {fromDashboard: true}}}/>)
         }
         return (
             <FormWrapper>
@@ -108,9 +116,9 @@ class EditUser extends Component {
                                     type="text"
                                     name='firstName'
                                     onChange={(event) => {
-                                    this.props.handleChange(this.props.user, event)}}
-                                    value={this.props.user.firstName}
-                                    placeholder={this.props.firstName}/>
+                                    this.props.handleChange(this.state.user, event)}}
+                                    value={this.state.user.firstName}
+                                    placeholder={this.props.user.firstName}/>
                             </label>
                         </LabelStyle>
                         <LabelStyle>
@@ -120,9 +128,9 @@ class EditUser extends Component {
                                 <input
                                     type="text"
                                     name='lastName'
-                                    onChange={(event) => this.props.handleChange(this.props.user, event)}
-                                    value={this.props.user.lastName}
-                                    placeholder={this.props.lastName}/>
+                                    onChange={(event) => { this.props.handleChange(this.state.user, event)}}
+                                    value={this.state.user.lastName}
+                                    placeholder={this.props.user.lastName}/>
                             </label>
                         </LabelStyle>
                         <LabelStyle>
@@ -132,9 +140,9 @@ class EditUser extends Component {
                                 <input
                                     type="text"
                                     name='email'
-                                    onChange={(event) => this.props.handleChange(this.props.user, event)}
-                                    value={this.props.user.email}
-                                    placeholder={this.props.email}/>
+                                    onChange={(event) => { this.props.handleChange(this.state.user, event)}}
+                                    value={this.state.user.email}
+                                    placeholder={this.props.user.email}/>
                             </label>
                         </LabelStyle>
                         <LabelStyle>
@@ -144,9 +152,9 @@ class EditUser extends Component {
                                 <input
                                     type="Number"
                                     name='handicap'
-                                    onChange={(event) => this.props.handleChange(this.props.user, event)}
-                                    value={this.props.user.handicap}
-                                    placeholder={this.props.handicap}/>
+                                    onChange={(event) => { this.props.handleChange(this.state.user, event)}}
+                                    value={this.state.user.handicap}
+                                    placeholder={this.props.user.handicap}/>
                             </label>
                         </LabelStyle>
                         <LabelStyle>
@@ -156,9 +164,9 @@ class EditUser extends Component {
                                 <input
                                     type="text"
                                     name='photoURL'
-                                    onChange={(event) => this.props.handleChange(this.props.user, event)}
-                                    value={this.props.user.photoURL}
-                                    placeholder={this.props.photo}/>
+                                    onChange={(event) => { this.props.handleChange(this.state.user, event)}}
+                                    value={this.state.user.photoURL}
+                                    placeholder={this.props.user.photoURL}/>
                             </label>
                         </LabelStyle>
                         <LabelStyle>

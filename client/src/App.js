@@ -8,7 +8,7 @@ import ExistingUser from'./components/ExistingUser'
 import UserProfile from './components/UserProfile'
 import EditUser from './components/EditUser'
 import Holes from './components/Holes'
-import Scorecard from './components/Scorecard'
+import ScorecardList from './components/ScorecardList'
 import styled from 'styled-components'
 
 class App extends Component {
@@ -16,8 +16,10 @@ class App extends Component {
     super()
 
     this.state = {
-      currentUser: {},
+      currentUser: [],
       users: [],
+      myScore: [], 
+      myRound: [],
       redirect: false
     }
   }
@@ -29,7 +31,18 @@ class App extends Component {
         console.log(response.data)
         const users = response.data
         this.setState({users})
+        console.log('Whatup', this.state.users.myScore)
       })
+  }
+  getScorecard = (userId) => {
+    console.log('Nah son', userId)
+    axios.get(`/api/users/${userId}`).then((response) => {
+      console.log(response.data)
+      const myScore = response.data
+      this.setState({myScore})
+      console.log('myScore', myScore)
+
+    })
   }
 
   showUser = (user) => {
@@ -62,7 +75,10 @@ class App extends Component {
   }
   deleteUser = async (user) => {
     try {
-        await axios.delete(`/api/users/${user._Id}`)
+      console.log(user)
+      const userId = user._id
+      console.log('delete userid:', userId)
+        await axios.delete(`/api/users/userList/${user}`)
 console.log(user._id)
         const indexToDelete = this.state.users.indexOf(user)
         console.log(indexToDelete)
@@ -76,22 +92,24 @@ console.log(user._id)
     }
 }
 
-  handleChange = (user, event) => {
-    console.log("Handle Change params:", user, event)
-    const updatedUsers = [...this.state.users] 
+handleChange = (user, event) => {
+  console.log("Handle Change params:", event)
+  const updatedUsers = [...this.state.users] 
 
-    console.log("All Users:", updatedUsers)
+  console.log("All Users:", updatedUsers)
 
-    const userToUpdate = updatedUsers.find((newUser) => {
-      return newUser._id === user._id
-    })
+  const userToUpdate = updatedUsers.find((newUser) => {
+    return newUser._id === user._id
+  })
 
-    console.log("User To Update:", userToUpdate)
+  console.log("User To Update:", userToUpdate)
 
-    userToUpdate[event.target.name] = event.target.value
+  userToUpdate[event.target.name] = event.target.value
 
-    this.setState({users: updatedUsers})
-  }
+  this.setState({ users: updatedUsers })
+  console.log('State in edit:', this.state.user)
+
+}
 
   updateUser = async (user) => {
     try {
@@ -105,6 +123,7 @@ console.log(user._id)
 
   componentWillMount() {
     this.getUsers()
+    this.getScorecard()
     
   }
 
@@ -118,9 +137,10 @@ console.log(user._id)
       user={this.state.currentUser}
       {...this.props}/>)
     const EditUserComponent = () => (<EditUser
+      users={this.state.users}
       user={this.state.currentUser}
-      handleChange={this.handleChange}
-      updateUser={this.updateUser} 
+      updateUser={this.updateUser}
+      handleChange={this.handleChange} 
       photo={this.state.currentUser.photoURL} 
       firstName={this.state.currentUser.firstName}
       lastName={this.state.currentUser.lastName}
@@ -128,7 +148,7 @@ console.log(user._id)
       email={this.state.currentUser.email} 
       {...this.props}/>)
     const HolesComponent = () => (<Holes/>)
-    const ScorecardComponent = () => (<Scorecard/>)
+    const ScorecardListComponent = () => (<ScorecardList users={this.state.users} myScore={this.state.myScore}/>)
 
     return (
       <Router>
@@ -140,9 +160,9 @@ console.log(user._id)
             <Route exact path='/userList' render={UserListComponent}/>
             <Route exact path='/existingUser' render={ExistingUserComponent}/>
             <Route exact path='/userProfile/:userId' render={UserProfileComponent}/>
-            <Route exact path='/editUser' render={EditUserComponent}/>
+            <Route exact path='/editUser/:userId' render={EditUserComponent}/>
             <Route exact path='/holes' render={HolesComponent}/> 
-            <Route exact path='/scorecard' render={ScorecardComponent}/>
+            <Route exact path='/scorecard/:scorecardId' render={ScorecardListComponent}/>
           </Switch>
 
         </div>

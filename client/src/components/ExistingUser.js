@@ -59,8 +59,10 @@ const LinkWrapper = styled.div`
 
 
     const ExistingUser = (props) => {
-        console.log("This are my props", props)
-        
+        console.log("These are my props", props)
+        function refreshPage (){
+            window.location.reload();
+        }
 
       
         return (
@@ -100,9 +102,9 @@ const LinkWrapper = styled.div`
      
             
           <br/> 
-    <LinkWrapper>
-          <Link to='/scorecard'>Play!</Link>
-          </LinkWrapper>
+    <SubmitButton>
+          <button onClick= {() => {props.deleteUser(props.userId); refreshPage();}}>Delete</button>
+          </SubmitButton>
     <SubmitButton>
    <Link to={`/userProfile/${props.user._id}`}>
     <button onClick = {() => {props.showUser(props.user)}}>View Profile</button>

@@ -97,7 +97,7 @@ class UserProfile extends Component {
                             <Link to="/">Home</Link>
                         </LinkWrapper>
                         <LinkWrapper>
-                            <Link to='/editUser'>Edit User</Link>
+                            <Link to={`/editUser/${this.props.user._id}`}>Edit User</Link>
                         </LinkWrapper>
                     </NavBar>
                     <h1>Profile</h1>
@@ -130,7 +130,7 @@ class UserProfile extends Component {
                         </LinkWrapper>
 
                         <LinkWrapper>
-                            <Link to='/scoreCard'>Scorecard</Link>
+                            <Link to='/api/users/:userId/scorecard'>Scorecard</Link>
                         </LinkWrapper>
 
                     </FooterBar>
