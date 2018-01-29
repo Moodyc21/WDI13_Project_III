@@ -130,7 +130,7 @@ class UserProfile extends Component {
                         </LinkWrapper>
 
                         <LinkWrapper>
-                            <Link to='/api/users/:userId/scorecard'>Scorecard</Link>
+                            <Link to={`/api/users/${this.props.user._id}/scorecard`}>Scorecard</Link>
                         </LinkWrapper>
 
                     </FooterBar>

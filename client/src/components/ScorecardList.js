@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 
-
 class ScorecardList extends Component {
-    render () {
-        return (
-            <div>
-            
-            <div>{this.props.users.myScore}</div>
-            </div>
-        )
-    }
-}
+  render() {
+    return (
+      <div>
+          <h1>Hello</h1>
 
+      </div>
+    );
+  }
+}
+ 
 export default ScorecardList

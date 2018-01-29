@@ -10,6 +10,8 @@ import EditUser from './components/EditUser'
 import Holes from './components/Holes'
 import ScorecardList from './components/ScorecardList'
 import styled from 'styled-components'
+import Table from './components/Table'
+import ReactDataGrid from 'react-data-grid'
 
 class App extends Component {
   constructor() {
@@ -35,8 +37,9 @@ class App extends Component {
       })
   }
   getScorecard = (userId) => {
-    console.log('Nah son', userId)
-    axios.get(`/api/users/${userId}`).then((response) => {
+    
+    axios.get(`/api/users/${this.state.currentUser._id}/scorecard`).then((response) => {
+      console.log('Nah son', userId)
       console.log(response.data)
       const myScore = response.data
       this.setState({myScore})
@@ -119,6 +122,10 @@ handleChange = (user, event) => {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  strokesCounter = () => {
+
   }
 
   componentWillMount() {
